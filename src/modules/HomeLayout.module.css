@@ -1,0 +1,18 @@
+.wrapper {
+  max-width: 1600px;
+  background-color: var(--black-100);
+  display: flex;
+  max-height: 100vh;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 auto;
+}
+
+.mainContainer {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  flex-direction: column;
+  overflow-x: hidden;
+}

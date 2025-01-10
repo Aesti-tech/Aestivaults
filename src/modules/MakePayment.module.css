@@ -1,0 +1,323 @@
+.container {
+  padding: 20px 40px;
+  min-height: 100vh;
+}
+
+.container h2,
+.address h4 {
+  color: var(--white-900);
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+}
+
+.address input,
+button {
+  width: 100%;
+  margin: 10px 0 10px;
+  display: flex;
+  justify-content: center;
+}
+.payment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+}
+
+.address span {
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--white-900);
+}
+
+.code {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.code img {
+  height: 400px;
+  width: 400px;
+}
+
+.ethereum {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 20px auto;
+  border: 3px solid var(--color-brand-600);
+  padding: 15px;
+}
+
+.image {
+  height: 420px;
+  width: 420px;
+  margin-top: 20px;
+  background-color: var(--color-brand-50);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.address h4 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  span {
+    font-weight: 600;
+  }
+}
+
+.confirm {
+  grid-column: span 2;
+  align-self: center;
+  padding: 40px 10%;
+}
+
+@media (max-width: 450px) {
+  .container {
+    padding: 20px 15px;
+    min-height: 100vh;
+  }
+
+  .container h2,
+  .address h4 {
+    color: var(--white-900);
+  }
+
+  .address {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .address input,
+  button {
+    display: flex;
+    justify-content: center;
+  }
+  .payment {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .address span {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--white-900);
+  }
+
+  .code {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .code img {
+    height: 300px;
+    width: 300px;
+  }
+
+  .ethereum {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 20px auto;
+    border: 3px solid var(--color-brand-600);
+    padding: 15px;
+  }
+
+  .image {
+    height: 320px;
+    width: 320px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .address h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 10px;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  .confirm {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .wait {
+    height: 80vh;
+    align-content: center;
+    justify-content: center;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 20px 15px;
+  }
+
+  .payment {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .address span {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--white-900);
+  }
+
+  .code {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .code img {
+    height: 260px;
+    width: 260px;
+  }
+
+  .ethereum {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin: 20px auto;
+    border: 3px solid var(--color-brand-600);
+    padding: 15px;
+  }
+
+  .image {
+    height: 270px;
+    width: 270px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .address h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 10px;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  .confirm {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .wait {
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 1048px) and (min-width: 700px) {
+  .container {
+    padding: 20px 15px;
+  }
+
+  .payment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .address span {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--white-900);
+  }
+
+  .code {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .code img {
+    height: 300px;
+    width: 300px;
+  }
+
+  .ethereum {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 20px auto;
+    border: 3px solid var(--color-brand-600);
+    padding: 15px;
+  }
+
+  .image {
+    height: 310px;
+    width: 310px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .address h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 10px;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  .confirm {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .wait {
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.time {
+  font-weight: 300;
+  font-family: var(--font-secondary);
+  color: var(--white-900);
+}
+
+.wait {
+  height: 80vh;
+  align-content: center;
+  justify-content: center;
+
+  p {
+    color: var(--white-900);
+  }
+}

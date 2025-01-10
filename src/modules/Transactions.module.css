@@ -1,0 +1,75 @@
+.transaction {
+  width: 100%;
+  grid-column: span 2;
+  background-color: var(--white-200);
+  border: 1px solid var(--white-100);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+
+  color: var(--white-900);
+  padding: 0 20px;
+}
+
+.transactionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.head {
+  font-family: var(--font-secondary);
+  font-size: 1.2rem;
+  padding: 15px 0;
+}
+
+.view {
+  font-size: 1rem;
+  color: var(--color-brand-700);
+}
+
+.creditWrapper {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.creditWrapper svg {
+  width: 38px;
+  padding: 3px;
+  border-radius: 6px;
+  margin-right: 12px;
+}
+
+.creditWrapper path {
+  width: 24px;
+}
+
+.creditMoney {
+  margin-left: auto;
+}
+
+.creditMoney.isActive {
+  color: #1aa385;
+}
+
+.creditMoney.isCancel {
+  color: #d14b69;
+}
+
+.creditMoney .isWait {
+  color: #3e4ec2;
+}
+
+.creditStatus {
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.creditType {
+  color: #e7e8ea;
+  margin-bottom: 6px;
+}

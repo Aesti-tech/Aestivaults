@@ -1,0 +1,25 @@
+.container {
+  width: 18rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border-right: 1px solid var(--white-900);
+}
+
+.container > nav {
+  margin-top: 50px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  gap: 1rem;
+  padding: 20px 0;
+  color: var(--white-900);
+}
+
+.link:last-of-type {
+  padding-bottom: 50px;
+}

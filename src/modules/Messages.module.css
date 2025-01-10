@@ -1,0 +1,78 @@
+:root {
+  --text-primary: var(--white-900);
+  --text-secondary: var(--black-700);
+  --icon-color: var(--blue-400);
+  --hover-bg: var(--black-300);
+  --border-color: var(--black-400);
+}
+
+:root.dark-mode {
+  --text-primary: var(--white-900);
+  --text-secondary: var(--white-300);
+  --icon-color: var(--blue-400);
+  --hover-bg: var(--white-800);
+  --border-color: var(--white-300);
+}
+
+.container {
+  padding: 24px;
+  min-height: 100vh;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.messageBox {
+  box-shadow: var(--shadow-md);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.messageItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.messageItem:last-child {
+  border-bottom: none;
+}
+
+.messageItem:hover {
+  background-color: var(--hover-bg);
+}
+
+.messageLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon {
+  font-size: 24px;
+  color: var(--icon-color);
+}
+
+.sender {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.subject {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.time {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}

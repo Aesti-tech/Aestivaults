@@ -1,0 +1,256 @@
+.createCollection h2 {
+  font-size: 1.5rem;
+  margin: 20px auto;
+  color: var(--white-900);
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.formRow label {
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  color: var(--white-900);
+}
+
+.formRow input,
+.formRow select {
+  width: 100%;
+  max-width: 700px;
+  padding: 0.5rem;
+  border: 1px solid var(--white-300);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.formRow:nth-child(4) input {
+  padding: 0 !important;
+  height: 2.2rem;
+  max-width: 400px;
+}
+
+.formRow input::-webkit-file-upload-button {
+  font: inherit;
+  font-weight: 500;
+  padding: 0 0.5rem;
+  height: 100%;
+  border: none;
+  color: var(--color-brand-50);
+  background-color: var(--blue-600);
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.select {
+  width: 100%;
+  max-width: 700px;
+}
+
+.select :global(.custom-select__control) {
+  background-color: var(--white-50);
+  border: 1px solid var(--white-300);
+}
+
+.select :global(.custom-select__menu) {
+  background-color: var(--white-50);
+  color: var(--white-900);
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.buttonRow button {
+  max-width: 200px;
+}
+
+.error {
+  font-size: 0.8rem;
+  color: var(--color-red-700);
+}
+
+@media (max-width: 768px) {
+  .formRow input,
+  .select {
+    max-width: 100%;
+  }
+
+  .buttonRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .buttonRow button {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .createCollection h2 {
+    font-size: 1.25rem;
+  }
+
+  .formRow label {
+    font-size: 0.9rem;
+  }
+
+  .formRow input {
+    font-size: 0.9rem;
+  }
+
+  .error {
+    font-size: 0.75rem;
+  }
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  color: var(--white-900);
+  margin-bottom: 20px;
+}
+
+.fileSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.fileSection label {
+  width: fit-content;
+}
+
+.fileInput {
+  display: none;
+}
+
+.filePreview {
+  width: 200px;
+  height: 200px;
+  max-height: 250px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+}
+
+.filePreview img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.uploadCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  min-height: 120px;
+  background-color: var(--white-50);
+  border: 1px solid var(--white-300);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.uploadCard.darkMode {
+  background-color: var(--blue-900);
+  border-color: var(--blue-700);
+}
+
+.imageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.plusIconWrapper {
+  background-color: var(--blue-500);
+  border-radius: 50%;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.plusIconWrapper:hover {
+  background-color: var(--blue-600);
+}
+
+.uploadTitle {
+  font-size: 1.1rem;
+  color: var(--blue-900);
+  margin-top: 10px;
+}
+
+.buttonGroup {
+  display: flex;
+  grid-column: span 2;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .mintForm {
+    padding: 20px;
+  }
+
+  .fileSection {
+    gap: 10px;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .filePreview {
+    width: 100%;
+    max-width: 200px;
+    height: 150px;
+    max-height: 150px;
+  }
+
+  .uploadCard {
+    padding: 20px;
+    min-height: 150px;
+  }
+
+  .uploadTitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .formTitle {
+    font-size: 1.2rem;
+  }
+
+  .filePreview {
+    width: 100%;
+    max-width: 150px;
+    height: 150px;
+  }
+
+  .fileSection {
+    gap: 5px;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

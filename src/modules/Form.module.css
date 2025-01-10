@@ -1,0 +1,98 @@
+/* Root styles for colors, fonts, and transitions are assumed to be globally available */
+
+.form {
+  padding: 1.5rem;
+  margin: 1rem;
+  background-color: var(--white-200);
+  border: 1px solid var(--white-300);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  color: var(--black-900);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 0.7fr 2fr;
+  justify-content: start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.formRow label {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--black-900);
+}
+
+.formRow:last-of-type {
+  margin-bottom: 0;
+}
+
+.error {
+  font-size: 1rem;
+  color: var(--color-red-700);
+  grid-column: span 2;
+  justify-self: start;
+}
+
+.formRow:has(button) {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+/* Responsive Styles */
+@media (max-width: 750px) {
+  .form {
+    padding: 1rem;
+  }
+
+  .formRow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .formRow label {
+    font-size: 1rem;
+  }
+
+  .error {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .formRow {
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .formRow label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    padding: 0.8rem;
+    margin: 0.5rem;
+    border-radius: var(--border-radius-sm);
+  }
+
+  .formRow {
+    gap: 0.4rem;
+    padding: 0.4rem 0;
+    margin-bottom: 0;
+  }
+
+  .formRow label {
+    font-size: 0.9rem;
+  }
+
+  .error {
+    font-size: 0.9rem;
+  }
+}

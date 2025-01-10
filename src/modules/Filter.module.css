@@ -1,0 +1,43 @@
+.styledFilter {
+  background-color: var(--lavender-100);
+  border: 1px solid var(--white-100);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  gap: 0.3rem;
+  max-height: fit-content;
+  margin: 10px;
+  height: 100%;
+}
+
+.filterButton {
+  background-color: var(--lavender-100);
+  border-radius: var(--border-radius-sm);
+  transition: all 0.3s;
+  border: none;
+  padding: 10px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  max-height: 100%;
+  color: var(--black-900);
+  margin: 0;
+  width: fit-content;
+  font-size: 1rem;
+}
+
+.filterButton:hover:not(:disabled) {
+  background-color: var(--blue-500);
+  color: var(--color-brand-50);
+}
+
+.filterButton.active {
+  background-color: var(--blue-500);
+  color: var(--color-brand-50);
+}
+
+.filterBox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}

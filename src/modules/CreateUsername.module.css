@@ -1,0 +1,110 @@
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalOverlay.light {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.modal {
+  background: linear-gradient(135deg, #007bff, #00c9ff);
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Title */
+.modal h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* Subtitle */
+.modal p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Input */
+.modal input {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  outline: none;
+  color: #333;
+}
+
+/* Button */
+.modal button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal button:hover {
+  background: #004494;
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark Mode */
+.modalOverlay.dark .modal {
+  background: linear-gradient(135deg, #001f3f, #007bff);
+}
+
+.modal.dark input {
+  background: #222;
+  color: white;
+  border: 1px solid #555;
+}
+
+.modal.dark button {
+  background: #003080;
+}
+
+.modal.dark button:hover {
+  background: #002060;
+}
+
+.error {
+  color: var(--color-red-700) !important;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

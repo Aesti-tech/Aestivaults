@@ -1,0 +1,116 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  font-size: 1rem;
+  background-image: url("/bg.jpeg");
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  padding: 20px;
+}
+
+.box {
+  background-color: var(--white-200);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+.box form {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+
+  h2 {
+    margin: 20px 0;
+    text-align: center;
+  }
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-family: var(--font-heading);
+}
+
+.terms {
+  display: block;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: var(--blue-600);
+  text-align: center;
+}
+
+.terms:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.term {
+  display: flex;
+  gap: 1rem;
+}
+
+.term input {
+  width: 30px !important;
+  height: 30px;
+}
+
+@media (max-width: 630px) {
+  .box {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    width: 80px;
+  }
+}
+
+@media (max-width: 450px) {
+  .box {
+    padding: 10px;
+  }
+
+  .box form h2 {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .term {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+  }
+
+  .term p {
+    font-size: 0.9rem !important;
+  }
+  .term input {
+    width: 10px !important;
+    height: 10px;
+  }
+}

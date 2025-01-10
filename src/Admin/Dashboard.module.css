@@ -1,0 +1,66 @@
+.layout {
+  background-color: var(--black-100);
+}
+
+.layout > div {
+  display: grid;
+  grid-template-columns: 18rem 1fr;
+  grid-template-rows: 5rem 1fr;
+}
+
+/*....................................PEnding.............................*/
+.pendingTransaction {
+  padding: 20px 10px;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--border-radius-md);
+}
+
+.pending {
+  display: grid;
+  grid-template-columns: 1fr 1fr 10rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px 20px 4px;
+  border-top-right-radius: var(--border-radius-md);
+  border-top-left-radius: var(--border-radius-md);
+
+  border-bottom: 1px solid var(--black-100);
+}
+
+.pending h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.pendingrow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 10rem;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 20px;
+  border-bottom: 1px solid var(--black-400);
+}
+
+.pendingrow:last-of-type {
+  border-bottom: none;
+}
+
+.pendingbutton {
+  width: fit-content;
+  font-weight: 300;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-secondary);
+  background-color: var(--blue-400);
+}
+
+/*.............................Navbar.....................................*/
+.nav {
+  background-color: var(--backdrop-color);
+  backdrop-filter: blur(var(--backdrop-blur));
+  box-shadow: var(--backdrop-shadow);
+}

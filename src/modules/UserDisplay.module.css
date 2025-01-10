@@ -1,0 +1,30 @@
+.styledUserAvatar {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: var(--white-900);
+  margin: auto 20px;
+}
+
+.avatar {
+  display: block;
+  height: 3rem;
+  height: 3rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  outline: 2px solid var(--lavender-600);
+}
+
+@media (max-width: 542px) {
+  .styledUserAvatar {
+    margin: auto 0;
+  }
+
+  .styledUserAvatar span {
+    display: none;
+  }
+}
