@@ -1,0 +1,14 @@
+.image {
+  max-height: 400px;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.imageContainer {
+  margin: 2rem;
+
+  p {
+    color: var(--white-900);
+  }
+}

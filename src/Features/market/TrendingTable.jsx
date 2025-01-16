@@ -59,6 +59,7 @@ function TrendingTable() {
     },
   ];
 
+  if (isLoadingtrends) return <SpinnerFullPage />;
   return (
     <Table
       delay={"2s"}
@@ -67,11 +68,7 @@ function TrendingTable() {
       filter={<Filter filterField="trending" options={filterOptions} />}
     >
       <Table.Head columns={heading} />
-      {isLoadingtrends ? (
-        <SpinnerFullPage />
-      ) : (
-        <Table.Body data={newtrend} columns={columns} />
-      )}
+      <Table.Body data={newtrend} columns={columns} />
     </Table>
   );
 }

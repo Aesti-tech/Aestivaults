@@ -1,25 +1,35 @@
 .container {
+  background-color: var(--black-200);
   width: 18rem;
-  display: flex;
-  align-items: center;
   flex-direction: column;
-  padding: 20px;
-  border-right: 1px solid var(--white-900);
-}
-
-.container > nav {
-  margin-top: 50px;
+  justify-content: center;
+  padding: 1rem;
+  transition: all 1s ease-in-out;
 }
 
 .link {
   display: flex;
   align-items: center;
-  font-size: 1.2rem;
+  justify-content: center;
   gap: 1rem;
-  padding: 20px 0;
   color: var(--white-900);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  transition: color 0.3s;
 }
 
-.link:last-of-type {
-  padding-bottom: 50px;
+.link:hover {
+  color: #38b2ac;
+}
+
+@media (max-width: 768px) {
+  .link {
+    display: none;
+  }
+
+  .container {
+    display: none;
+  }
 }

@@ -122,7 +122,11 @@ function Signup() {
           >
             Create Account
           </Button>
-          <Link className={styles.terms} to="/community/Terms">
+
+          <p className={styles.signupPrompt}>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+          <Link className={styles.terms} to="/Terms and conditions">
             Terms and Conditions
           </Link>
         </Form>

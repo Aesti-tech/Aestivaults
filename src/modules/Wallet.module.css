@@ -126,14 +126,32 @@
   align-items: center;
 }
 
-.confirmed {
+.APPROVED {
   color: #4caf50;
 }
 
-.Cancelled {
+.REJECTED {
   color: red;
 }
 
-.waiting {
+.PENDING {
   color: #1890ff;
+}
+
+.Platinum {
+  outline: 2px solid var(--platinum-color);
+  padding: 3px;
+  border: none !important;
+}
+
+.Gold {
+  outline: 2px solid var(--gold-color);
+  padding: 3px;
+  border: none !important;
+}
+
+.Diamond {
+  outline: 2px solid var(--diamond-color);
+  padding: 3px;
+  border: none !important;
 }

@@ -40,18 +40,27 @@ import Terms from "./Features/Community/Terms";
 import Sucess from "./Features/Wallet/Sucess";
 import CreateUsername from "./ui/CreateUsername";
 import Users from "./Admin/Users";
+import TransactionReceipt from "./Features/Wallet/Receipt";
+import Listing from "./Features/Dashboard/collection/Listing";
+import PurchaseNft from "./ui/PurchaseNft";
+import UserProfile from "./ui/UserProfile";
+import Error from "./ui/Error";
+import VerificationPayment from "./ui/VerificationPayment";
 
 const router = createBrowserRouter([
   {
     element: <Signup />,
     path: "/signup",
+    errorElement: <Error />,
   },
   {
     element: <Login />,
     path: "/login",
+    errorElement: <Error />,
   },
   {
     element: <HomeLayout />,
+    errorElement: <Error />,
 
     children: [
       { element: <Home />, path: "/" },
@@ -65,13 +74,18 @@ const router = createBrowserRouter([
       { element: <Subscription />, path: "/community/Subscription" },
 
       { element: <UserGuide />, path: "/community/guides" },
-
-      { element: <Terms />, path: "/community/Terms" },
+      {
+        element: <VerificationPayment />,
+        path: "/community/Subscription/VerificationPayment/:id",
+      },
 
       {
         element: <Market />,
         path: "/explore",
       },
+      { element: <PurchaseNft />, path: "/purchaseNft" },
+      { element: <Terms />, path: "/Terms and conditions" },
+      { element: <UserProfile />, path: "userprofile/:id" },
 
       {
         element: <Explore />,
@@ -97,6 +111,10 @@ const router = createBrowserRouter([
           {
             element: <Dashboard />,
             path: "/dashboard/user",
+          },
+          {
+            element: <Listing />,
+            path: "/dashboard/listing/:id",
           },
           {
             element: <Collection />,
@@ -130,6 +148,7 @@ const router = createBrowserRouter([
                 element: <TagPayment />,
                 path: "/dashboard/wallet/fund/paypal",
               },
+
               {
                 element: <TagPayment />,
                 path: `/dashboard/wallet/fund/zelle`,
@@ -161,11 +180,18 @@ const router = createBrowserRouter([
           {
             element: <Wallet />,
             path: "/dashboard/wallet",
+            children: [
+              {
+                element: <TransactionReceipt />,
+                path: "/dashboard/wallet/receipt/:id",
+              },
+            ],
           },
           {
             element: <Sucess />,
             path: `/dashboard/wallet/success`,
           },
+
           {
             element: <Messages />,
             path: "/dashboard/messages",
@@ -181,6 +207,8 @@ const router = createBrowserRouter([
   {
     element: <AdminLayout />,
     path: `/admin`,
+
+    errorElement: <Error />,
 
     children: [
       {

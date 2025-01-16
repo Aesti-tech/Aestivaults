@@ -1,4 +1,4 @@
-import { FaChartBar, FaDollarSign, FaHome, FaUserCheck } from "react-icons/fa";
+import { FaDollarSign, FaHome, FaUserCheck } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import styles from "./Sidebar.module.css";
@@ -6,7 +6,7 @@ import styles from "./Sidebar.module.css";
 function Sidebar() {
   return (
     <div className={styles.container}>
-      <nav>
+      <nav className="flex flex-col items-start p-4 space-y-6">
         <Link className={styles.link} to="/admin">
           <FaHome size={20} />
           Dashboard
@@ -22,10 +22,6 @@ function Sidebar() {
         <Link className={styles.link} to="/admin/users">
           <FaUserCheck size={20} />
           User Management
-        </Link>
-        <Link className={styles.link} to="/analytics">
-          <FaChartBar size={20} />
-          Analytics
         </Link>
       </nav>
     </div>

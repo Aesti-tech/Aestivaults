@@ -6,6 +6,7 @@ import useEthereumChart from "./useEthereumChart";
 import { useSearchParams } from "react-router-dom";
 import { eachDayOfInterval, format, subDays, subHours } from "date-fns";
 import { formatCurrency } from "../../../utils/helpers";
+import SpinnerFullPage from "../../../ui/SpinnerFullPage";
 
 function EthereumChart() {
   const [searchParams] = useSearchParams();
@@ -31,7 +32,7 @@ function EthereumChart() {
     return hours;
   }
 
-  if (isLoading) return <p>Loading Ethereum Data...</p>;
+  if (isLoading) return <SpinnerFullPage />;
   if (isError) return <p>Error: {error.message}</p>;
 
   return (

@@ -5,7 +5,7 @@
   border: 1px solid var(--white-100);
   border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-lg);
-
+  height: fit-content;
   color: var(--white-900);
   padding: 0 20px;
 }
@@ -29,7 +29,6 @@
 }
 
 .creditWrapper {
-  margin-top: auto;
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -60,16 +59,17 @@
   color: #d14b69;
 }
 
-.creditMoney .isWait {
+.creditMoney.isWait {
   color: #3e4ec2;
 }
 
 .creditStatus {
   font-size: 13px;
   font-weight: normal;
+  align-self: center;
 }
 
 .creditType {
-  color: #e7e8ea;
+  color: var(--white-900);
   margin-bottom: 6px;
 }

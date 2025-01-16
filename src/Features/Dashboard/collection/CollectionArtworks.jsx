@@ -6,13 +6,16 @@ import { useMint } from "./useMint";
 import SpinnerFullPage from "../../../ui/SpinnerFullPage";
 import Modal from "../../../ui/Modal";
 import { useDarkMode } from "../../../hooks/DarkModeContext";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function CollectionArtworks() {
   const { data, isLoading } = useMint();
-  const location = useLocation();
-
   const { isDarkMode } = useDarkMode();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  if (!location.state) navigate("/dashboard/collection");
+
   if (isLoading) return <SpinnerFullPage />;
 
   return (
@@ -22,12 +25,12 @@ function CollectionArtworks() {
           isDarkMode ? "text-blue-100" : "text-blue-900"
         } text-center`}
       >
-        {location.state[0].collectionName} Collection
+        {location?.state[0].collectionName} Collection
       </h1>
       <div className="mx-auto space-y-8">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
           {data.images &&
-            data.images.map((image) => (
+            data?.images?.map((image) => (
               <Card
                 key={image.id}
                 className="overflow-hidden bg-blue-900/20 border-blue-700/50"
@@ -51,8 +54,15 @@ function CollectionArtworks() {
                   }}
                   className={`aspect-square relative group`}
                 >
-                  <div className="absolute inset-0 bg-blue-100/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                    <p className="text-blue-100 text-md">{image.title}</p>
+                  <div className="absolute inset-0 flex flex-col opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                    <p className="text-white font-bold text-md">{image.name}</p>
+                    <Link
+                      to={`/dashboard/listing/${image.id}`}
+                      state={location.state[0].id}
+                      className="p-2 bg-blue-200 rounded-lg text-sm shadow-md font-bold"
+                    >
+                      List Artwork
+                    </Link>
                   </div>
                 </motion.div>
               </Card>

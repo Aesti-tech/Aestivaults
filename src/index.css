@@ -154,6 +154,18 @@
   --yellow-500: #eab308;
   --yellow-600: #ca8a04;
   --yellow-700: #a16207;
+
+  --gold-color: #ffd700;
+
+  --platinum-color: #e5e4e2;
+
+  --diamond-color: #b9f2ff;
+
+  --Gold-gradient: linear-gradient(to right, #ffd700, #ffb300);
+
+  --Platinum-gradient: linear-gradient(to right, #e5e4e2, #c0c0c0);
+
+  --Diamond-gradient: linear-gradient(to right, #b9f2ff, #f8f9fa, #a8d8ea);
 }
 
 *,
@@ -187,6 +199,7 @@ h2,
 h3 {
   font-family: var(--font-heading);
   font-weight: 700;
+  color: var(--white-900);
 }
 
 h4,
@@ -194,6 +207,7 @@ h5,
 h6 {
   font-family: inherit;
   font-weight: 300;
+  color: var(--white-900);
 }
 
 p,
@@ -204,6 +218,7 @@ select {
   font-family: var(--font-body);
   font-weight: 400;
   color: inherit;
+  color: var(--white-900);
   font-size: 18px !important; /* Prevents zooming */
 }
 
@@ -249,6 +264,7 @@ h5,
 h6 {
   overflow-wrap: break-word;
   hyphens: auto;
+  color: var(--white-900);
 }
 
 img {

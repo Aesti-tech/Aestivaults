@@ -252,7 +252,7 @@
   font-size: 1rem;
   padding: 0 4px;
   font-weight: 600;
-  margin: 0 20px;
+  margin: 0 10px;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -263,11 +263,15 @@
 .nftInfo h3 span {
   font-size: 0.8rem;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 2px;
   font-family: var(--font-body);
 
   svg {
     height: 1rem;
     color: var(--blue-600);
+    width: fit-content;
   }
 }
 

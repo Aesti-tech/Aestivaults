@@ -1,14 +1,19 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import useFetchData from "../../hooks/useFetchData";
+import { Link } from "react-router-dom";
 
 function Collections() {
+  const { data, isLoading } = useFetchData("collections");
+
+  if (isLoading) return null;
+  const collection = [...data].reverse().splice(0, 6);
+
   return (
     <div className="container mx-auto py-[100px]">
-      <h1 className="text-4xl font-bold text-white mb-8">
-        Featured Collections
-      </h1>
+      <h1 className="text-4xl font-bold mb-8">Featured Collections</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {collections.map((collection) => (
+        {collection.map((collection) => (
           <CollectionCard key={collection.id} {...collection} />
         ))}
       </div>
@@ -18,8 +23,19 @@ function Collections() {
 
 export default Collections;
 
-export const CollectionCard = ({ name, worth, backgroundImage, owner }) => {
+export const CollectionCard = ({ collectionName, featuredimage, userid }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { data, isLoading } = useFetchData("usernames", {
+    column: "user_id",
+    value: userid,
+  });
+
+  if (isLoading) return null;
+  const [userInfo] = data;
+
+  const {
+    user_data: [{ name, avatar, username }],
+  } = userInfo;
 
   return (
     <motion.div
@@ -30,7 +46,7 @@ export const CollectionCard = ({ name, worth, backgroundImage, owner }) => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
+        style={{ backgroundImage: `url(${featuredimage})` }}
       />
 
       {/* Gradient Overlay */}
@@ -38,8 +54,7 @@ export const CollectionCard = ({ name, worth, backgroundImage, owner }) => {
 
       {/* Collection Info */}
       <div className="absolute bottom-0 left-0 p-4 w-full">
-        <h2 className="text-lg font-bold text-white mb-1">{name}</h2>
-        <p className="text-purple-400 font-semibold text-sm">{worth}</p>
+        <h2 className="text-lg font-bold text-white mb-1">{collectionName}</h2>
       </div>
 
       {/* Owner Preview */}
@@ -52,8 +67,8 @@ export const CollectionCard = ({ name, worth, backgroundImage, owner }) => {
             className="absolute bottom-4 right-4"
           >
             <img
-              src={owner.avatar}
-              alt={owner.name}
+              src={avatar}
+              alt={name}
               className="w-16 h-16 rounded-full border-2 border-white"
             />
           </motion.div>
@@ -70,58 +85,19 @@ export const CollectionCard = ({ name, worth, backgroundImage, owner }) => {
             className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center"
           >
             <img
-              src={owner.avatar}
-              alt={owner.name}
+              src={avatar}
+              alt={name}
               className="w-20 h-20 rounded-full border-2 border-white mb-3"
             />
-            <h3 className="text-lg font-semibold text-white mb-2">
-              {owner.name}
-            </h3>
-            <button className="px-4 w-auto py-1 bg-purple-600 hover:bg-purple-700 text-white text-sm rounded-md transition-colors">
-              View Profile
-            </button>
+            <h3 className="text-lg font-semibold text-white mb-2">{name}</h3>
+            <Link to={`/userprofile/${username}`}>
+              <button className="px-4 w-auto py-1 bg-purple-600 hover:bg-purple-700 text-white text-sm rounded-md transition-colors">
+                View Profile
+              </button>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
     </motion.div>
   );
 };
-
-const collections = [
-  {
-    id: 1,
-    name: "Ethereal Dreams",
-    worth: "245.5 ETH",
-    backgroundImage:
-      "https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=800&auto=format&fit=crop&q=60",
-    owner: {
-      name: "Sarah Digital",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-    },
-  },
-  {
-    id: 2,
-    name: "Neon Horizons",
-    worth: "189.2 ETH",
-    backgroundImage:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=60",
-    owner: {
-      name: "Alex Rivers",
-      avatar:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-    },
-  },
-  {
-    id: 3,
-    name: "Digital Genesis",
-    worth: "324.8 ETH",
-    backgroundImage:
-      "https://images.unsplash.com/photo-1642427749670-f20e2e76ed8c?w=800&auto=format&fit=crop&q=60",
-    owner: {
-      name: "Maya Chen",
-      avatar:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
-    },
-  },
-];

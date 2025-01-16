@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import UserCard from "./UserCard";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useDarkMode } from "../../hooks/DarkModeContext";
+import useFetchData from "../../hooks/useFetchData";
 
 const TrendingUsers = () => {
   const containerRef = useRef(null);
+  const { data, isLoading } = useFetchData("usernames");
 
   const scroll = (direction = "left") => {
     if (containerRef.current) {
@@ -15,6 +17,10 @@ const TrendingUsers = () => {
   };
 
   const { isDarkMode } = useDarkMode();
+
+  if (isLoading) return null;
+
+  const user = data.slice(0, 10);
 
   return (
     <div className={`container mx-auto px-4 py-16 `}>
@@ -55,7 +61,7 @@ const TrendingUsers = () => {
         className="overflow-x-auto scrollbar-hide flex gap-4 pb-4"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        {trendingUsers.map((user) => (
+        {user.map((user) => (
           <motion.div
             key={user.id}
             initial={{ opacity: 0, x: 20 }}
@@ -71,86 +77,3 @@ const TrendingUsers = () => {
 };
 
 export default TrendingUsers;
-
-const trendingUsers = [
-  {
-    id: 1,
-    name: "Sarah",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-    totalSales: "120.5 ETH",
-    verified: true,
-  },
-  {
-    id: 2,
-    name: "CryptoKing",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-    totalSales: "98.2 ETH",
-    verified: true,
-  },
-  {
-    id: 3,
-    name: "NFT Master",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
-    totalSales: "87.1 ETH",
-    verified: true,
-  },
-  {
-    id: 4,
-    name: "Pixel Artist",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
-    totalSales: "65.8 ETH",
-    verified: false,
-  },
-  {
-    id: 5,
-    name: "Digital",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400",
-    totalSales: "45.2 ETH",
-    verified: true,
-  },
-  {
-    id: 1,
-    name: "Sarah",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-    totalSales: "120.5 ETH",
-    verified: true,
-  },
-  {
-    id: 2,
-    name: "CryptoKing",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-    totalSales: "98.2 ETH",
-    verified: true,
-  },
-  {
-    id: 3,
-    name: "NFT Master",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
-    totalSales: "87.1 ETH",
-    verified: true,
-  },
-  {
-    id: 4,
-    name: "Pixel Artist",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
-    totalSales: "65.8 ETH",
-    verified: false,
-  },
-  {
-    id: 5,
-    name: "Digital",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400",
-    totalSales: "45.2 ETH",
-    verified: true,
-  },
-];

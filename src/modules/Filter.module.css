@@ -7,7 +7,7 @@
   gap: 0.3rem;
   max-height: fit-content;
   margin: 10px;
-  height: 100%;
+  height: fit-content;
 }
 
 .filterButton {

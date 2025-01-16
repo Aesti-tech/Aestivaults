@@ -14,7 +14,7 @@ function Invoice() {
     .replace(/[^0-9.]/g, "")}`;
 
   return (
-    <>
+    <div className="overflow-y-auto w-full  ">
       {state.type === "Bank Transfer" ? (
         <BankInvoice
           transaction={state}
@@ -30,7 +30,7 @@ function Invoice() {
           invoiceDate={invoiceDate}
         />
       )}
-    </>
+    </div>
   );
 }
 

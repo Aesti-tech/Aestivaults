@@ -1,28 +1,62 @@
 import { FaChartBar, FaDollarSign } from "react-icons/fa";
 import { FaMessage, FaUserCheck } from "react-icons/fa6";
 import styles from "./Dashboard.module.css";
-import { useState } from "react";
-import { supabase } from "../services/API/supabase";
+import { useEffect, useState } from "react";
+import { supabase, supabaseAdmin } from "../services/API/supabase";
 import toast from "react-hot-toast";
+import useFetchData from "../hooks/useFetchData";
+import SpinnerFullPage from "../ui/SpinnerFullPage";
+import { formatCurrency } from "../utils/helpers";
 
 function Dashboard() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const head =
     "text-sm font-medium bg-gradient-to-r from-slate-900 to-gray-400 text-transparent bg-clip-text";
 
+  useEffect(() => {
+    const fetchAuthUsers = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const { data, error } = await supabaseAdmin.auth.admin.listUsers();
+        if (error) throw error;
+        setUsers(data.users);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchAuthUsers();
+  }, []);
+
+  const { data, isLoading } = useFetchData("Transactions");
+
+  if (isLoading || loading) return <SpinnerFullPage />;
+
+  const pendingData = data?.filter((item) => item.status === "PENDING");
+
+  const totalAmount = data?.reduce(
+    (total, item) => total + Number(item.amount),
+    0
+  );
+
   return (
-    <div className={styles.Dashboard}>
+    <div className={`w-full overflow-y-auto p-6 ${styles.Dashboard}`}>
       <h2 className="text-3xl font-bold mb-3 mt-4 bg-gradient-to-r from-blue-400 to-pink-700 text-transparent bg-clip-text">
         Dashboard Overview
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-4 py-8">
         <div className="border-2 shadow-md rounded-lg p-4 py-8">
           <header className="flex flex-row items-center rounded-md justify-between space-y-0 pb-2">
-            <h2 className={head}>Pending Requests</h2>
+            <h2 className={head}>Pending Transactions</h2>
             <FaDollarSign className="h-5 w-5 text-muted-foreground text-green-300" />
           </header>
           <div>
-            <div className="text-2xl font-bold">15</div>
-            <p className="text-xs text-muted-foreground">+2 from last hour</p>
+            <div className="text-2xl font-bold">{pendingData.length}</div>
           </div>
         </div>
         <div className="border-2 shadow-md rounded-lg p-4 py-8">
@@ -31,8 +65,7 @@ function Dashboard() {
             <FaUserCheck className="h-5 w-5 text-muted-foreground text-white" />
           </head>
           <div>
-            <div className="text-2xl font-bold">1,234</div>
-            <p className="text-xs text-muted-foreground">+7 new users today</p>
+            <div className="text-2xl font-bold">{users.length}</div>
           </div>
         </div>
         <div className="border-2 shadow-md rounded-lg p-4 py-8">
@@ -53,7 +86,9 @@ function Dashboard() {
             <FaChartBar className="h-5 w-5 text-muted-foreground text-indigo-300" />
           </head>
           <div>
-            <div className="text-2xl font-bold">$12,345</div>
+            <div className="text-2xl font-bold">
+              {formatCurrency(totalAmount)}
+            </div>
             <p className="text-xs text-muted-foreground">
               +2.5% from last month
             </p>

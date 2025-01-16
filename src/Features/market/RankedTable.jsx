@@ -3,9 +3,10 @@ import Table from "../../ui/Table";
 import Filter from "../../ui/Filter";
 import { FaDollarSign, FaEthereum } from "react-icons/fa";
 import useMarketData from "./useMarketData";
+import SpinnerFullPage from "../../ui/SpinnerFullPage";
 
 function RankedTable() {
-  const { ranked } = useMarketData();
+  const { ranked, isLoadingrank } = useMarketData();
   const trendingFilter = [
     { value: "24h", label: "Last 24H" },
     { value: "7d", label: "Last 7D" },
@@ -42,6 +43,8 @@ function RankedTable() {
       format: (value) => (typeof value === "number" ? value.toFixed(2) : "N/A"),
     },
   ];
+
+  if (isLoadingrank) return <SpinnerFullPage />;
 
   return (
     <Table

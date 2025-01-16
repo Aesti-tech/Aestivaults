@@ -25,7 +25,7 @@ function Footer() {
       <div className={styles.community}>
         <h4>Community</h4>
         <Link to="/community">About Us</Link>
-        <Link>Terms & Conditions</Link>
+        <Link to="/Terms and conditions">Terms & Conditions</Link>
         <Link to="/privacy">Privacy Policy</Link>{" "}
         <Link to={"/login"}>Login</Link>
       </div>

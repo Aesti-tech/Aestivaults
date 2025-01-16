@@ -4,12 +4,18 @@ import styles from "../../modules/Artwork.module.css";
 import Activity from "./Activity";
 import ArtInfo from "./ArtInfo";
 import ArtistInfo from "./ArtistInfo";
-import { galleryImages } from "../../data";
+import SpinnerFullPage from "../../ui/SpinnerFullPage";
+import useFetchData from "../../hooks/useFetchData";
 
 function Artwork() {
   const { id } = useParams();
-  const item = galleryImages.filter((item) => item.public_id === id);
-  const [info] = item;
+  const { data, isLoading } = useFetchData("gallery", {
+    column: "id",
+    value: id,
+  });
+
+  if (isLoading) return <SpinnerFullPage />;
+  const [info] = data ?? {};
 
   return (
     <div className={`${styles.userBox}`}>

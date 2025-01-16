@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useDarkMode } from "../../hooks/DarkModeContext";
 
 function Subscription() {
@@ -113,15 +114,19 @@ function Subscription() {
                 ))}
               </ul>
             </div>
-            <button
-              className={`mt-6 py-2 px-4 rounded-lg shadow-md transition ${
-                isDarkMode
-                  ? "bg-blue-500 text-gray-100 hover:bg-blue-400 focus:ring-blue-300"
-                  : "bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500"
-              } focus:outline-none focus:ring-2 focus:ring-opacity-50`}
+            <Link
+              to={`/community/Subscription/VerificationPayment/${plan.title}`}
             >
-              Choose {plan.title}
-            </button>
+              <button
+                className={`mt-6 py-2 px-4 rounded-lg shadow-md transition ${
+                  isDarkMode
+                    ? "bg-blue-500 text-gray-100 hover:bg-blue-400 focus:ring-blue-300"
+                    : "bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500"
+                } focus:outline-none focus:ring-2 focus:ring-opacity-50`}
+              >
+                Choose {plan.title}
+              </button>
+            </Link>
           </div>
         ))}
       </div>

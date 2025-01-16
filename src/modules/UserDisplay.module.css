@@ -28,3 +28,18 @@
     display: none;
   }
 }
+
+.Platinum {
+  outline: 2px solid var(--platinum-color);
+  padding: 3px;
+}
+
+.Gold {
+  outline: 2px solid var(--gold-color);
+  padding: 3px;
+}
+
+.Diamond {
+  outline: 2px solid var(--diamond-color);
+  padding: 3px;
+}

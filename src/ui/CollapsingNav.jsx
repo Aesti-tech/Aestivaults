@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { FaUserCircle, FaUserPlus, FaWallet } from "react-icons/fa";
 import { FaCompass } from "react-icons/fa";
 import { FaCartShopping, FaMessage } from "react-icons/fa6";
-import { MdWork } from "react-icons/md";
 import useGetUser from "../hooks/useGetUser";
 import Button from "./Button";
 import DarkModeToggle from "./DarkModeToggle";
@@ -94,13 +93,6 @@ function CollapsingNav() {
             <path d="M256 367.4c-61.4 0-111.4-50-111.4-111.4s50-111.4 111.4-111.4 111.4 50 111.4 111.4-50 111.4-111.4 111.4zm0-192.8a81.5 81.5 0 000 162.8 81.5 81.5 0 000-162.8z" />
           </svg>
           Settings
-        </Link>
-        <Link
-          className={styles.navLink}
-          onClick={handleClick}
-          to={"/dashboard"}
-        >
-          <MdWork /> Jobs
         </Link>
 
         <div className="flex items-center gap-4">

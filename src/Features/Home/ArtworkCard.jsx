@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import { FaEthereum } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-function ArtworkCard({ title, artist, image, price, isDarkMode }) {
+function ArtworkCard({ title, artist, image, price, id, isDarkMode }) {
   return (
     <motion.div
       whileHover={{ y: -5 }}
@@ -28,21 +30,23 @@ function ArtworkCard({ title, artist, image, price, isDarkMode }) {
         </p>
         <div className="flex justify-between items-center">
           <span
-            className={`font-semibold ${
+            className={`font-semibold flex items-center ${
               isDarkMode ? "text-purple-400" : "text-purple-600"
             }`}
           >
-            {price}
+            {price} Eth <FaEthereum />
           </span>
-          <button
-            className={`text-sm w-20 px-3 py-1 rounded-lg ${
-              isDarkMode
-                ? "text-white bg-white/10 hover:bg-white/20"
-                : "text-gray-900 bg-gray-200 hover:bg-gray-300"
-            }`}
-          >
-            View
-          </button>
+          <Link to={`/artwork/${id}`}>
+            <button
+              className={`text-sm w-20 px-3 py-1 rounded-lg ${
+                isDarkMode
+                  ? "text-white bg-white/10 hover:bg-white/20"
+                  : "text-gray-900 bg-gray-200 hover:bg-gray-300"
+              }`}
+            >
+              View
+            </button>
+          </Link>
         </div>
       </div>
     </motion.div>

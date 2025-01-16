@@ -44,72 +44,100 @@ export async function getCurrentUser() {
 
   if (data?.user?.role === "authenticated") return data?.user;
 }
-
 export async function updateCurrentUser({
   password,
   fullName,
   avatar,
   username,
 }) {
-  // update the password or fullName
+  try {
+    let updatedUserData; // Declare variable in outer scope
 
-  let updateData;
-  if (password) updateData = { password };
-  if (username) updateData = { data: { username } };
+    // Combine updateData fields
+    const updateData = {};
+    if (password) updateData.password = password;
+    if (fullName)
+      updateData.data = { ...(updateData.data || {}), name: fullName };
+    if (username) updateData.data = { ...(updateData.data || {}), username };
 
-  if (fullName) updateData = { data: { name: fullName } };
+    // Update the user
+    if (Object.keys(updateData).length > 0) {
+      const { data, error } = await supabase.auth.updateUser(updateData);
+      if (error) throw new Error(error.message);
+      updatedUserData = data; // Assign to the outer-scoped variable
+    }
 
-  const { data, error } = await supabase.auth.updateUser(updateData);
+    // Handle username logic
+    if (username) {
+      const { data: userCreated, error: userPresent } = await supabase
+        .from("usernames")
+        .select("*")
+        .eq("user_id", updatedUserData.user.id);
 
-  if (error) throw new Error(error.message);
+      if (userPresent) throw new Error(userPresent.message);
 
-  const { data: userCreated, error: userPresent } = await supabase
-    .from("usernames")
-    .select("*")
-    .eq("user_id", data.user.id);
+      if (userCreated[0]?.username === username) {
+        toast.error("Username already exists!");
+        return;
+      }
 
-  if (userPresent) throw new Error(userPresent.message);
+      if (userCreated.length === 0) {
+        const { error: usernamesError } = await supabase
+          .from("usernames")
+          .insert([
+            {
+              user_id: updatedUserData.user.id,
+              username,
+              verified: "False",
+              full_name: fullName || updatedUserData.user.user_metadata?.name,
+              rating: "0",
+            },
+          ]);
 
-  if (userCreated[0].username === username) {
-    toast.error("username already exists!!");
-    return;
+        if (usernamesError) throw new Error(usernamesError.message);
+      }
+    }
+
+    // Handle avatar upload
+    if (avatar) {
+      const fileName = `avatar-${updatedUserData.user.id}-${Math.random()}`;
+      const { error: storageError } = await supabase.storage
+        .from("avatars")
+        .upload(fileName, avatar);
+
+      if (storageError) throw new Error(storageError.message);
+
+      // Update avatar in the user
+      const avatarUrl = `${aestiUrl}/storage/v1/object/public/avatars/${fileName}`;
+      const { data: finalUpdatedUser, error: error2 } =
+        await supabase.auth.updateUser({
+          data: {
+            avatar: avatarUrl,
+          },
+        });
+
+      if (error2) throw new Error(error2.message);
+
+      return finalUpdatedUser;
+    }
+
+    const { error } = await supabase
+      .from("usernames")
+      .update({
+        user_data: [updatedUserData.user.user_metadata],
+        owner_id: updatedUserData.user.user_metadata.owner_nft_id,
+        full_name: updatedUserData.user.user_metadata.name,
+        updated_at: Date.now().toLocaleString(),
+      })
+      .eq("user_id", updatedUserData.user.id);
+
+    if (error) throw new Error(error.message);
+
+    return updatedUserData;
+  } catch (error) {
+    console.error("Error updating user:", error.message);
+    throw error;
   }
-
-  if (userCreated.length === 0) {
-    const { error: usernamesError } = await supabase.from("usernames").insert([
-      {
-        user_id: data.user.id,
-        username,
-        verified: "False",
-        full_name: data.user.user_metadata.name,
-        rating: "0",
-      },
-    ]);
-
-    if (usernamesError) throw new Error(usernamesError.message);
-  }
-
-  if (!avatar) return data;
-  //  upload the avatar image
-
-  const fileName = `avatar-${data.user.id}-${Math.random()}`;
-
-  const { error: storageError } = await supabase.storage
-    .from("avatars")
-    .upload(fileName, avatar);
-
-  if (storageError) throw new Error(storageError.message);
-
-  // update avatar in the user
-
-  const { data: updatedUser, error: error2 } = await supabase.auth.updateUser({
-    data: {
-      avatar: `${aestiUrl}/storage/v1/object/public/avatars/${fileName}`,
-    },
-  });
-  if (error2) throw new Error(error2.message);
-
-  return updatedUser;
 }
 
 export async function createCollection({ name, description, image }) {

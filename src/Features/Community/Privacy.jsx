@@ -10,30 +10,29 @@ const Privacy = () => {
     >
       <h1
         className={`text-4xl font-bold text-center ${
-          isDarkMode ? "text-blue-200" : "text-gray-800"
+          isDarkMode ? "text-white" : "text-gray-800"
         } mb-6`}
       >
         Privacy Policy
       </h1>
       <p
         className={`text-gray-600 mb-6 text-center ${
-          isDarkMode ? "text-blue-400" : "text-gray-600"
+          isDarkMode ? "text-white" : "text-gray-600"
         }`}
       >
-        <strong>Effective Date: 2024-02-03</strong>
+        <strong>Effective Date: 12th october, 2024</strong>
       </p>
-
       <section className="mb-8">
         <h2
           className={`text-2xl font-semibold ${
-            isDarkMode ? "text-blue-200" : "text-gray-700"
+            isDarkMode ? "text-white" : "text-gray-700"
           } mb-4`}
         >
           1. Information We Collect
         </h2>
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           We collect the following types of information when you use our
@@ -41,7 +40,7 @@ const Privacy = () => {
         </p>
         <ul
           className={`list-disc pl-8 mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           <li className="text-[1.2rem]">
@@ -78,25 +77,24 @@ const Privacy = () => {
           } mb-8`}
         />
       </section>
-
       <section className="mb-8">
         <h2
           className={`text-2xl font-semibold ${
-            isDarkMode ? "text-blue-200" : "text-gray-700"
+            isDarkMode ? "text-white" : "text-gray-700"
           } mb-4`}
         >
           2. How We Use Your Information
         </h2>
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           We use the collected information for the following purposes:
         </p>
         <ul
           className={`list-disc pl-8 mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           <li className="text-[1.2rem]">
@@ -121,17 +119,17 @@ const Privacy = () => {
             regulations, including legal requests from government authorities.
           </li>
         </ul>
+
         <hr
           className={`border-t-2 ${
             isDarkMode ? "border-blue-600" : "border-gray-300"
           } mb-8`}
         />
       </section>
-
       <section className="mb-8">
         <h2
           className={`text-2xl font-semibold ${
-            isDarkMode ? "text-blue-200" : "text-gray-700"
+            isDarkMode ? "text-white" : "text-gray-700"
           } mb-4`}
         >
           3. Sharing Your Information
@@ -139,7 +137,7 @@ const Privacy = () => {
 
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           We do not sell, rent, or trade your personal information to third
@@ -149,7 +147,7 @@ const Privacy = () => {
 
         <ul
           className={`list-disc pl-8 mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           <li className="text-[1.2rem]">
@@ -183,14 +181,14 @@ const Privacy = () => {
       <section className="mb-8">
         <h2
           className={`text-2xl font-semibold ${
-            isDarkMode ? "text-blue-200" : "text-gray-700"
+            isDarkMode ? "text-white" : "text-gray-700"
           } mb-4`}
         >
           4. Data Retention
         </h2>
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           We will retain your personal information for as long as necessary to
@@ -208,14 +206,14 @@ const Privacy = () => {
       <section className="mb-8">
         <h2
           className={`text-2xl font-semibold ${
-            isDarkMode ? "text-blue-200" : "text-gray-700"
+            isDarkMode ? "text-white" : "text-gray-700"
           } mb-4`}
         >
           5. Your Data Protection Rights
         </h2>
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           Depending on your location, you may have the following rights
@@ -223,7 +221,7 @@ const Privacy = () => {
         </p>
         <ul
           className={`list-disc pl-8 mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           <li className="text-[1.2rem]">
@@ -250,7 +248,7 @@ const Privacy = () => {
         </ul>
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           To exercise any of these rights, please contact us at{" "}
@@ -268,14 +266,14 @@ const Privacy = () => {
       <section className="mb-8">
         <h2
           className={`text-2xl font-semibold ${
-            isDarkMode ? "text-blue-200" : "text-gray-700"
+            isDarkMode ? "text-white" : "text-gray-700"
           } mb-4`}
         >
           6. Security of Your Information
         </h2>
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           We take the security of your personal information seriously and
@@ -294,14 +292,137 @@ const Privacy = () => {
       <section className="mb-8">
         <h2
           className={`text-2xl font-semibold ${
-            isDarkMode ? "text-blue-200" : "text-gray-700"
+            isDarkMode ? "text-white" : "text-gray-700"
           } mb-4`}
         >
-          7. International Data Transfers
+          7. Cookies and Tracking Technologies
         </h2>
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
+          }`}
+        >
+          We use cookies and similar tracking technologies to:
+        </p>
+
+        <ul
+          className={`list-disc pl-8 mb-4 ${
+            isDarkMode ? "text-white" : "text-gray-600"
+          }`}
+        >
+          <li className="text-[1.2rem]">
+            Enhance your overall user experience.{" "}
+          </li>
+
+          <li className="text-[1.2rem]">
+            Analyze website traffic and understand usage patterns.{" "}
+          </li>
+
+          <li className="text-[1.2rem]">
+            Personalize content based on user preferences.
+          </li>
+        </ul>
+
+        <p
+          className={`leading-relaxed mb-4 ${
+            isDarkMode ? "text-white" : "text-gray-600"
+          }`}
+        >
+          You can manage your cookie preferences through your browser settings
+          at any time.
+        </p>
+        <hr
+          className={`border-t-2 ${
+            isDarkMode ? "border-blue-600" : "border-gray-300"
+          } mb-8`}
+        />
+      </section>
+      <section className="mb-8">
+        <h2
+          className={`text-2xl font-semibold ${
+            isDarkMode ? "text-white" : "text-gray-700"
+          } mb-4`}
+        >
+          8. Blockchain Data and Public Information
+        </h2>
+
+        <ul
+          className={`list-disc pl-8 mb-4 ${
+            isDarkMode ? "text-white" : "text-gray-600"
+          }`}
+        >
+          <li className="text-[1.2rem]">
+            Transactions, including wallet addresses and NFT purchases, are
+            publicly recorded on the blockchain.
+          </li>
+
+          <li className="text-[1.2rem]">
+            This data is permanent and cannot be altered or deleted due to the
+            immutable nature of blockchain technology.
+          </li>
+        </ul>
+
+        <hr
+          className={`border-t-2 ${
+            isDarkMode ? "border-blue-600" : "border-gray-300"
+          } mb-8`}
+        />
+      </section>
+      <section className="mb-8">
+        <h2
+          className={`text-2xl font-semibold ${
+            isDarkMode ? "text-white" : "text-gray-700"
+          } mb-4`}
+        >
+          9. Data Security
+        </h2>
+        <p
+          className={`leading-relaxed mb-4 ${
+            isDarkMode ? "text-white" : "text-gray-600"
+          }`}
+        >
+          We implement industry-standard security measures to safeguard your
+          personal data from unauthorized access, alteration, or disclosure.
+        </p>
+
+        <ul
+          className={`list-disc pl-8 mb-4 ${
+            isDarkMode ? "text-white" : "text-gray-600"
+          }`}
+        >
+          <p
+            className={`leading-relaxed mb-4 ${
+              isDarkMode ? "text-white" : "text-gray-600"
+            }`}
+          >
+            However:
+          </p>
+          <li className="text-[1.2rem]">
+            No method of data transmission or storage is 100% secure.
+          </li>
+          <li className="text-[1.2rem]">
+            We cannot guarantee absolute security, and users are encouraged to
+            take personal measures to secure their accounts and assets.
+          </li>
+        </ul>
+
+        <hr
+          className={`border-t-2 ${
+            isDarkMode ? "border-blue-600" : "border-gray-300"
+          } mb-8`}
+        />
+      </section>
+      <section className="mb-8">
+        <h2
+          className={`text-2xl font-semibold ${
+            isDarkMode ? "text-white" : "text-gray-700"
+          } mb-4`}
+        >
+          10. International Data Transfers
+        </h2>
+        <p
+          className={`leading-relaxed mb-4 ${
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           Aestivaults is based in United Kingdom, and your personal data may be
@@ -319,14 +440,14 @@ const Privacy = () => {
       <section className="mb-8">
         <h2
           className={`text-2xl font-semibold ${
-            isDarkMode ? "text-blue-200" : "text-gray-700"
+            isDarkMode ? "text-white" : "text-gray-700"
           } mb-4`}
         >
-          8. Children’s Privacy
+          11. Children’s Privacy
         </h2>
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           Aestivaults does not knowingly collect or solicit personal information
@@ -343,14 +464,14 @@ const Privacy = () => {
       <section className="mb-8">
         <h2
           className={`text-2xl font-semibold ${
-            isDarkMode ? "text-blue-200" : "text-gray-700"
+            isDarkMode ? "text-white" : "text-gray-700"
           } mb-4`}
         >
-          9. Updates to This Privacy Policy
+          12. Updates to This Privacy Policy
         </h2>
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           We may update this Privacy Policy from time to time to reflect changes
@@ -368,14 +489,14 @@ const Privacy = () => {
       <section className="mb-8">
         <h2
           className={`text-2xl font-semibold ${
-            isDarkMode ? "text-blue-200" : "text-gray-700"
+            isDarkMode ? "text-white" : "text-gray-700"
           } mb-4`}
         >
-          10. Third-Party Links
+          13. Third-Party Links
         </h2>
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           Our platform may contain links to third-party websites or services.
@@ -392,26 +513,24 @@ const Privacy = () => {
       <section className="mb-8">
         <h2
           className={`text-2xl font-semibold ${
-            isDarkMode ? "text-blue-200" : "text-gray-700"
+            isDarkMode ? "text-white" : "text-gray-700"
           } mb-4`}
         >
-          11. Contact Us
+          14. Contact Us
         </h2>
         <p
           className={`leading-relaxed mb-4 ${
-            isDarkMode ? "text-blue-300" : "text-gray-600"
+            isDarkMode ? "text-white" : "text-gray-600"
           }`}
         >
           If you have any questions or concerns about this Privacy Policy or our
           data practices, please contact us at:
         </p>
-        <p
-          className={` mb-4 ${isDarkMode ? "text-blue-300" : "text-gray-600"}`}
-        >
+        <p className={` mb-4 ${isDarkMode ? "text-white" : "text-gray-600"}`}>
           <strong>Email:</strong>{" "}
           <a href="mailto:Aestivaults@gmail.com">Aestivaults@gmail.com</a>
         </p>
-        <p className={`mb-4 ${isDarkMode ? "text-blue-300" : "text-gray-600"}`}>
+        <p className={`mb-4 ${isDarkMode ? "text-white" : "text-gray-600"}`}>
           <strong>Phone:</strong>{" "}
           <a href="tel:+44456676575675">+44 556 7676 76</a>
         </p>

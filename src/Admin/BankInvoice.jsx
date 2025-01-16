@@ -110,7 +110,7 @@ function BankInvoice({ transaction, ethPrice, invoice_id, invoiceDate }) {
   const { isPending, SendMail } = useSendMail(EmailPdf);
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 w-full  bg-gray-100 min-h-screen">
       {!isInvoiceVisible && (
         <div className="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">

@@ -5,6 +5,7 @@ import styles from "../../../modules/Messages.module.css";
 import useGetMessage from "../../../hooks/useGetMessage";
 
 import dayjs from "dayjs";
+import { supabase } from "../../../services/API/supabase";
 
 const Messages = () => {
   const { messages } = useGetMessage();
@@ -19,16 +20,24 @@ const Messages = () => {
   };
 
   // Navigate to full message details
-  const viewMessage = (id) => {
+  const viewMessage = async (id) => {
     const message = messagesArray.find((msg) => msg.id === id);
 
+    const { error } = await supabase
+      .from("messages")
+      .update({ unread: "false" })
+      .eq("id", id);
+
+    if (error) throw new Error(error);
     navigate(`/dashboard/messages/${id}`, { state: { message } });
   };
 
   if (location.pathname !== "/dashboard/messages") return <Outlet />;
   return (
     <div className={styles.container}>
-      <h1 className={styles.heading}>Messages</h1>
+      <h1 className={styles.heading}>
+        Messages <span>{messages.length}</span>
+      </h1>
       <div className={styles.messageBox}>
         {messagesArray.map((msg) => (
           <div
@@ -40,7 +49,7 @@ const Messages = () => {
           >
             <div className={styles.messageLeft}>
               <div className={styles.icon}>
-                {msg.unread ? <FiMail /> : <AiFillMail />}
+                {!msg.unread ? <FiMail /> : <AiFillMail />}
               </div>
               <div>
                 <p className={styles.sender}>{msg.sender}</p>

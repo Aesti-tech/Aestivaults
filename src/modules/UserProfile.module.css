@@ -1,0 +1,17 @@
+.Platinum {
+  outline: 4px solid var(--platinum-color);
+  padding: 3px;
+  border: none !important;
+}
+
+.Gold {
+  outline: 4px solid var(--gold-color);
+  padding: 3px;
+  border: none !important;
+}
+
+.Diamond {
+  outline: 4px solid var(--diamond-color);
+  padding: 3px;
+  border: none !important;
+}

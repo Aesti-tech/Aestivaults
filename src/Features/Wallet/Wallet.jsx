@@ -10,69 +10,87 @@ import { useDarkMode } from "../../hooks/DarkModeContext";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { formatCurrency } from "../../utils/helpers";
 import Table from "../../ui/Table";
-import { MetaMaskIcon } from "../Dashboard/user/Transactions";
-import { Link } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import useGetAmount from "../../hooks/useGetAmount";
+import useFetchData from "../../hooks/useFetchData";
+import { FaLeaf, FaMoneyBill } from "react-icons/fa";
+import { CheckCircle } from "lucide-react";
 
 function Wallet() {
-  const { user, isLoading } = useUser();
-  const { avatar, name } = user?.user_metadata || {};
+  const { user } = useUser();
+  const { avatar, name, verified } = user?.user_metadata || {};
   const { amount } = useGetAmount();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { data: Transactions, isLoading } = useFetchData("Transactions", {
+    column: "user_id",
+    value: user.id,
+  });
 
-  const data = [
-    {
-      Medium: "Metamask",
-      Amount: formatCurrency(4000),
-      type: "Deposit",
-      status: "confirmed",
-      Date: "01-01-25",
-    },
-    {
-      Medium: "Metamask",
-      Amount: formatCurrency(4000),
-      type: "Transfer",
-      status: "confirmed",
-      Date: "01-01-25",
-    },
-    {
-      Medium: "Metamask",
-      Amount: formatCurrency(4000),
-      type: "withdrawal",
-      status: "waiting",
-      Date: "01-01-25",
-    },
-    {
-      Medium: "Metamask",
-      Amount: formatCurrency(4000),
-      type: "Transfer",
-      status: "Cancelled",
-      Date: "01-01-25",
-    },
-  ];
+  function getDate(isoDate) {
+    const date = new Date(isoDate);
+
+    const readableDate = date.toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+    });
+
+    return readableDate;
+  }
+
+  function handleReceipt(id) {
+    navigate(`/dashboard/wallet/receipt/${id}`);
+  }
+
+  if (isLoading) return null;
+  if (location.pathname !== "/dashboard/wallet") return <Outlet />;
+
+  const shownTransactions = [...Transactions]?.reverse();
+
+  const data = shownTransactions.map((item) => {
+    return {
+      Medium: item.type,
+      Amount: `$${item.amount}`,
+      status: item.status,
+      Date: item.created_at,
+      id: item.id,
+    };
+  });
+
   const column = [
-    { key: "#", label: "" },
+    { key: "#", render: (_, i) => i + 1 },
     {
       key: "Medium",
       label: "medium",
       render: (item) => (
-        <div className={styles.transactionICon}>
-          <MetaMaskIcon />
-          <div>
-            <h3>{item.Medium}</h3>
-            <p>{item.type}</p>
-          </div>
+        <div
+          onClick={() => handleReceipt(item.id)}
+          className={styles.transactionICon}
+        >
+          <>{getItem(item.Medium)}</>
         </div>
       ),
     },
-    { key: "Amount", label: "amount" },
+    {
+      key: "Amount",
+      label: "amount",
+    },
     {
       key: "status",
       label: "status",
       render: (render) => (
-        <p className={styles[render.status]}>{render.status}</p>
+        <p className={`${styles[render.status]}`}>{render.status}</p>
       ),
     },
-    { key: "Date", label: "Date" },
+    {
+      key: "Date",
+      label: "Date",
+      render: (item) => <p>{getDate(item.Date)}</p>,
+    },
   ];
 
   if (isLoading) return <SpinnerFullPage />;
@@ -83,8 +101,17 @@ function Wallet() {
       <div className={styles.wallet}>
         <div className={styles.card}>
           <section className={styles.cardHead}>
-            <h4>Hello {name.split(" ")[0]}</h4>
-            <img src={avatar} alt="" />
+            <h4 className="flex items-center gap-x-2">
+              Hello {name.split(" ")[0]}{" "}
+              {verified && (
+                <CheckCircle className="w-6 h-6 text-purple-500 sm:mt-0 mt-1" />
+              )}
+            </h4>
+            <img
+              className={`${styles[verified]}  ${styles.avatar}`}
+              src={avatar}
+              alt=""
+            />
           </section>
           <div>
             <h5>
@@ -204,3 +231,60 @@ const EarningsChart = ({ amount }) => {
     </div>
   );
 };
+
+function getItem(item) {
+  const img = "h-10 w-10";
+  const div = "flex items-center gap-x-2";
+
+  if (item === "Bank Transfer") {
+    return (
+      <div className={div}>
+        <img className={img} src={`/payments/bank.png`} alt="" />
+        <p className={styles.creditType}>Bank deposit</p>
+      </div>
+    );
+  }
+
+  if (item === "zelle") {
+    return (
+      <div className={div}>
+        <img className={img} src={`/payments/zelle.jpeg`} alt="" />
+        <p className={styles.creditType}>Zelle Deposit</p>
+      </div>
+    );
+  }
+
+  if (item === "cryptowallet") {
+    return (
+      <div className={div}>
+        <img className={img} src={`/payments/wallet.png`} alt="" />
+        <p className={styles.creditType}>Crypto wallet Deposit</p>
+      </div>
+    );
+  }
+
+  if (item === "Minted Artwork") {
+    return (
+      <div className={div}>
+        <FaLeaf size={25} />
+        <p className={styles.creditType}>{item}</p>
+      </div>
+    );
+  }
+
+  if (item === "inter transfer") {
+    return (
+      <div className={div}>
+        <AiOutlineSwap size={25} />
+        <p className={styles.creditType}>Inter Transfer</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className={div}>
+      <FaMoneyBill />
+      <p className={styles.creditType}>{item}</p>
+    </div>
+  );
+}

@@ -25,7 +25,7 @@ function UserDisplay() {
     };
   }, []);
 
-  const { name, avatar } = user.user_metadata;
+  const { name, avatar, verified } = user.user_metadata;
 
   const displayname = showName ? name : name.split(" ")[0];
 
@@ -33,9 +33,9 @@ function UserDisplay() {
 
   return (
     <Link to={"/dashboard"}>
-      <div className={styles.styledUserAvatar}>
+      <div className={`${styles.styledUserAvatar}`}>
         <img
-          className={styles.avatar}
+          className={`${styles[verified]}  ${styles.avatar}`}
           src={avatar || "/avatar.webp"}
           alt={`Avatar of ${displayname}`}
         />

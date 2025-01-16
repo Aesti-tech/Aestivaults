@@ -5,8 +5,10 @@ import toast from "react-hot-toast";
 
 function AdminMessages() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-6">Messaging System</h1>
+    <div className="w-full p-6">
+      <h1 className="text-3xl overflow-y-auto font-bold mb-6">
+        Messaging System
+      </h1>
       <MessagingSystem />
     </div>
   );

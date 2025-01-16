@@ -11,7 +11,6 @@ function Collection() {
   const { collections, isLoading, isMutating } = useCollection();
   const location = useLocation();
   const navigate = useNavigate();
-
   const { isDarkMode } = useDarkMode();
 
   if (isLoading || isMutating) return <SpinnerFullPage />;

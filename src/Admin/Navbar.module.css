@@ -1,0 +1,50 @@
+.burger {
+  display: none;
+  z-index: 20;
+}
+
+.nav {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: -80vw;
+  width: 80vw;
+  height: 100vh;
+  background-color: var(--backdrop-color);
+  backdrop-filter: blur(var(--backdrop-blur));
+  box-shadow: var(--backdrop-shadow);
+  width: 18rem;
+  padding: 1rem;
+  transition: all 1s ease-in-out;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  transition: color 0.3s;
+  color: var(--blue-600);
+}
+
+.link:hover {
+  color: var(--blue-600);
+}
+
+/* Style the navbar for mobile responsiveness */
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+
+  .username {
+    display: none;
+  }
+
+  .nav {
+    display: block;
+  }
+}

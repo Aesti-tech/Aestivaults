@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import styles from "../../modules/Hero.module.css";
 import { useDarkMode } from "../../hooks/DarkModeContext";
+import { Link } from "react-router-dom";
 
 const Button = ({
   children,
@@ -57,8 +58,12 @@ const Hero = () => {
             first and largest NFT marketplace.
           </p>
           <div className="flex gap-4 justify-center md:justify-start">
-            <Button variant="primary">Start Exploring</Button>
-            <Button variant="secondary">Create NFT</Button>
+            <Link to={"/market"}>
+              <Button variant="primary">Start Exploring</Button>
+            </Link>
+            <Link to={"/dashboard/collection"}>
+              <Button variant="secondary">Create NFT</Button>
+            </Link>
           </div>
         </motion.div>
 

@@ -1,13 +1,53 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "../../../modules/MessageDetails.module.css";
+import Button from "../../../ui/Button";
 import dayjs from "dayjs";
+import { supabase } from "../../../services/API/supabase";
+import toast from "react-hot-toast";
+import Modal from "../../../ui/Modal";
+import AcceptBid from "./AcceptBid";
+import useFetchData from "../../../hooks/useFetchData";
+import SpinnerFullPage from "../../../ui/SpinnerFullPage";
 
 const MessageDetails = () => {
-  const location = useLocation();
+  const { id } = useParams();
   const navigate = useNavigate();
-  const { message } = location.state || {};
+  const { data, isLoading } = useFetchData("messages", {
+    column: "id",
+    value: id,
+  });
+
+  if (isLoading) return <SpinnerFullPage />;
+
+  const [message] = data || {};
 
   const formatTime = (isoString) => dayjs(isoString).format("h:mm A");
+
+  async function handleReject() {
+    const { error } = await supabase
+      .from("messages")
+      .delete()
+      .eq("id", message.id);
+
+    if (error) throw new Error(error);
+
+    const { error: messagesError } = await supabase.from("messages").insert([
+      {
+        sender: "Aestivaults inc.",
+        subject: "Bid Rejected",
+        image: message.image,
+        message: `your bid for the below NFT with token ID ${message.bid_details[0].NFT_token} has been rejected please make a higher bid if still interested`,
+        user_id: message.bid_details[0]?.user_id,
+        bid_details: message.bid_details,
+      },
+    ]);
+
+    if (messagesError)
+      throw new Error("Error updating messages", messagesError);
+
+    toast.success("Bid rejected successfully!");
+    navigate("/dashboard/messages");
+  }
 
   if (!message) {
     return (
@@ -32,7 +72,7 @@ const MessageDetails = () => {
         </p>
         <p className={styles.time}>
           <span className={styles.label}>Sent at:</span>{" "}
-          {formatTime(message.time)}
+          {formatTime(message.created_at)}
         </p>
         <p className={styles.time}>{message.message}</p>
         {message.image && (
@@ -65,9 +105,44 @@ const MessageDetails = () => {
             </a>
           </>
         )}
-        <button onClick={() => navigate(-1)} className={styles.goBackButton}>
-          Go Back
-        </button>
+
+        {message.subject === "New Bid Received: Action Required" &&
+          !message.bid_details[0].accepted && (
+            <div className="flex gap-x-2 px-6">
+              <Modal>
+                <Modal.Open opens={"medium"}>
+                  <Button sizes={"medium"} variations={"primary"}>
+                    Accept
+                  </Button>
+                </Modal.Open>
+
+                <AcceptBid message={message} />
+              </Modal>
+
+              <Button
+                onClick={handleReject}
+                sizes={"medium"}
+                variations={"danger"}
+              >
+                Reject
+              </Button>
+            </div>
+          )}
+
+        {message.subject === "Bid Accepted: Action Required" && (
+          <Button
+            onClick={() => navigate("/purchaseNft", { state: message })}
+            variations={"primary"}
+            sizes={"medium"}
+          >
+            Purchase Nft
+          </Button>
+        )}
+
+        {message.subject === "New Bid Received: Action Required" &&
+          message.bid_details[0].accepted && (
+            <p className="font-bold text-2xl p-6">Bid accepted</p>
+          )}
       </div>
     </div>
   );
