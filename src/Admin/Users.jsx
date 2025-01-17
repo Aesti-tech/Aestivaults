@@ -13,9 +13,12 @@ const Users = () => {
       setLoading(true);
       setError(null);
       try {
-        const { data, error } = await supabaseAdmin.auth.admin.listUsers();
-        if (error) throw error;
-        setUsers(data.users);
+        const response = await fetch(
+          "https://aestivaults.vercel.app/api/listUsers"
+        );
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error);
+        setUsers(data);
       } catch (err) {
         setError(err.message);
       } finally {
