@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { supabaseAdmin } from "../services/API/supabase";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -30,8 +29,14 @@ const Users = () => {
 
   const deleteUser = async (id) => {
     try {
-      const { error } = await supabaseAdmin.auth.admin.deleteUser(id);
-      if (error) throw error;
+      const response = await fetch(
+        `https://aestivaults.vercel.app/api/deleteUser?id=${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error);
       setUsers(users.filter((user) => user.id !== id));
       toast.success("User deleted successfully");
     } catch (err) {
@@ -41,10 +46,14 @@ const Users = () => {
 
   const disableUser = async (id) => {
     try {
-      const { error } = await supabaseAdmin.auth.admin.updateUserById(id, {
-        ban: true,
-      });
-      if (error) throw error;
+      const response = await fetch(
+        `https://aestivaults.vercel.app/api/disableUser?id=${id}`,
+        {
+          method: "PUT",
+        }
+      );
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error);
       setUsers(
         users.map((user) => (user.id === id ? { ...user, ban: true } : user))
       );
