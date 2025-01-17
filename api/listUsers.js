@@ -1,4 +1,4 @@
-//api / listUsers.js;
+//api/listUsers.js;
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseAdmin = createClient(
