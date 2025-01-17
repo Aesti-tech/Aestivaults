@@ -2,7 +2,7 @@ import { FaChartBar, FaDollarSign } from "react-icons/fa";
 import { FaMessage, FaUserCheck } from "react-icons/fa6";
 import styles from "./Dashboard.module.css";
 import { useEffect, useState } from "react";
-import { supabase, supabaseAdmin } from "../services/API/supabase";
+import { supabase } from "../services/API/supabase";
 import toast from "react-hot-toast";
 import useFetchData from "../hooks/useFetchData";
 import SpinnerFullPage from "../ui/SpinnerFullPage";
@@ -21,9 +21,12 @@ function Dashboard() {
       setLoading(true);
       setError(null);
       try {
-        const { data, error } = await supabaseAdmin.auth.admin.listUsers();
-        if (error) throw error;
-        setUsers(data.users);
+        const response = await fetch(
+          "https://aestivaults.vercel.app/api/listUsers"
+        );
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error);
+        setUsers(data);
       } catch (err) {
         setError(err.message);
       } finally {
