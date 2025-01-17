@@ -42,9 +42,9 @@ function UserProfile() {
 export default UserProfile;
 
 const ProfileHeader = ({ profile, user, isDarkMode }) => {
-  const displayString = `${user.owner_id.slice(0, 6)}...${user.owner_id.slice(
-    -6
-  )}`;
+  const displayString = `${user.owner_id?.slice(0, 6) || ""}...${
+    user.owner_id?.slice(-6) || ""
+  } `;
 
   const {
     user_data: [data],

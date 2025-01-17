@@ -8,7 +8,7 @@ function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="col-span-2 w-full bg-gray-800 text-white flex justify-between items-center p-4">
+    <div className="col-span-2 w-full bg-gray-800 text-white flex fixed justify-between items-center p-4">
       {/* Logo and Hamburger */}
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-2">

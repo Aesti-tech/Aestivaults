@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  position: fixed;
   height: 100vh;
   font-size: 1rem;
   background-image: url("/bg.jpeg");
@@ -13,11 +14,12 @@
 }
 
 .box {
-  background-color: var(--white-200);
+  background-color: var(--backdrop-color);
+  backdrop-filter: blur(var(--backdrop-blur));
+  box-shadow: var(--backdrop-shadow);
+  width: 100%;
   padding: 30px 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
   max-width: 700px;
   text-align: center;
   color: var(--white-900);
@@ -28,6 +30,7 @@
   box-shadow: none;
   padding: 0;
   text-align: start;
+  background: none;
 }
 
 .logoWrapper {
@@ -47,7 +50,7 @@ h2 {
 
 .subtitle {
   font-size: 0.9rem;
-  color: var(--white-800);
+  color: black;
   margin-bottom: 20px;
 }
 

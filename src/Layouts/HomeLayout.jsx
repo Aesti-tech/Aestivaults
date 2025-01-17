@@ -48,9 +48,14 @@ function HomeLayout() {
     <div className={styles.wrapper}>
       {showNav && <SideNavigation />}
       <div className={styles.mainContainer} ref={mainContainerRef}>
-        <NavBar />
+        <NavBar showNav={showNav} />
 
-        <div className={styles.container}>
+        <div
+          style={{
+            paddingLeft: showNav ? "6rem" : "0",
+          }}
+          className={styles.container}
+        >
           <Outlet />
           {showFooter && <Footer />}
         </div>

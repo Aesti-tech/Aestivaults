@@ -8,8 +8,8 @@
   animation: left 1s var(--delay) both;
   color: var(--black-900);
   height: 100vh;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  z-index: 200;
 }
 
 .leftSide .svg {

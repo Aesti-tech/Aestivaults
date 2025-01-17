@@ -53,6 +53,11 @@ function MintArtwork() {
   }
 
   async function onSubmit(data) {
+    if (image.length === 0) {
+      toast.error("please upload an image to proceed");
+      return;
+    }
+
     let { data: USD_BALANCE, error: usdError } = await supabase
       .from("USD_BALANCE")
       .select("*")
@@ -81,10 +86,7 @@ function MintArtwork() {
       .eq("user_id", user.id);
     if (updateUsdError) console.error("Error fetching data:", updateUsdError);
     const hello = { ...data, image, collectionId: id };
-    if (image.length === 0) {
-      toast.error("please upload an image to proceed");
-      return;
-    }
+
     mintArt(hello, {
       onSuccess: () => {
         reset();

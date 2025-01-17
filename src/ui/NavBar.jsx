@@ -7,11 +7,16 @@ import CollapsingNav from "./CollapsingNav";
 import useGetUser from "../hooks/useGetUser";
 import UserDisplay from "./UserDisplay";
 
-function NavBar() {
+function NavBar({ showNav }) {
   const { isAuthenticated } = useGetUser();
 
   return (
-    <nav className={`${styles.navBar}`}>
+    <nav
+      className={`${styles.navBar}`}
+      style={{
+        paddingLeft: showNav ? "6rem" : "0",
+      }}
+    >
       <div className={styles.header} style={{ "--delay": "1s" }}>
         <Link className={styles.logo}>
           <img className={styles.logoImg} src="/logo.png" alt="" />

@@ -16,7 +16,7 @@ function useLogin() {
         navigate("/createusername");
         return;
       }
-      navigate("/explore");
+      navigate("/dashboard");
     },
 
     onError: (err) => {

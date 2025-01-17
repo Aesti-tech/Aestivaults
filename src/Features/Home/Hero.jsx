@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import styles from "../../modules/Hero.module.css";
 import { useDarkMode } from "../../hooks/DarkModeContext";
 import { Link } from "react-router-dom";
 
@@ -20,7 +19,7 @@ const Button = ({
     <motion.button
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      className={`${baseStyles} ${variants[variant]} ${className} ${styles.button}`}
+      className={`${baseStyles} ${variants[variant]} ${className} `}
       {...props}
     >
       {children}

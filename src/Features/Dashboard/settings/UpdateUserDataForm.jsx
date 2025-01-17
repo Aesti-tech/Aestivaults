@@ -60,7 +60,7 @@ function UpdateUserDataForm() {
         />
       </Formrow>
 
-      <Formrow name={"Avatar Image"}>
+      <Formrow name={"Profile Image"}>
         <Input
           type="file"
           id="avatar"
